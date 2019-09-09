@@ -5,7 +5,7 @@ import Header from './components/header/Header'
 import HomePage from './pages/home/HomePage'
 import ShopPage from './pages/shop/ShopPage'
 import Login from './pages/login/Login'
-import { auth } from './firebase/firebase.utils'
+import { auth, createUserProfileDocument } from './firebase/firebase.utils'
 
 import './App.css'
 
@@ -13,15 +13,24 @@ const App = () => {
 	const [currentUser, setCurrentUser] = useState(null)
 
 	useEffect(() => {
-		let unsubscribefromAuth = auth.onAuthStateChanged(user =>
-			setCurrentUser(user)
-		)
+		let unsubscribefromAuth = auth.onAuthStateChanged(async userAuth => {
+			if (userAuth) {
+				const userRef = await createUserProfileDocument(userAuth)
+
+				userRef.onSnapshot(snapShot => {
+					setCurrentUser({
+						id: snapShot.id,
+						...snapShot.data(),
+					})
+				})
+			}
+
+			setCurrentUser(userAuth)
+		})
 
 		// component will unmount
 		return () => unsubscribefromAuth()
 	}, [])
-
-	console.log(currentUser)
 
 	return (
 		<div>
