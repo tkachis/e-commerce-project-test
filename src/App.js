@@ -31,7 +31,7 @@ const App = () => {
 		// component will unmount
 		return () => unsubscribefromAuth()
 	}, [])
-
+	console.log(currentUser)
 	return (
 		<div>
 			<Header currentUser={currentUser} />
