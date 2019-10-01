@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-import FormInput from '../form-input/FormInput'
-import CustomButton from '../custom-button/CustomButton'
+import FormInput from '../form-input/FormInput';
+import CustomButton from '../custom-button/CustomButton';
 
-import { auth, createUserProfileDocument } from '../../firebase/firebase.utils'
+import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 
-import './sign-up.scss'
+import './sign-up.scss';
 
 const SignUp = () => {
 	const [formData, setFormData] = useState({
@@ -13,40 +13,40 @@ const SignUp = () => {
 		email: '',
 		password: '',
 		confirmPassword: '',
-	})
+	});
 
-	const { displayName, email, password, confirmPassword } = formData
+	const { displayName, email, password, confirmPassword } = formData;
 
 	const handleSubmit = async e => {
-		e.preventDefault()
+		e.preventDefault();
 
 		if (password !== confirmPassword) {
-			alert(`password don't match`)
-			return
+			alert(`password don't match`);
+			return;
 		}
 
 		try {
 			const { user } = await auth.createUserWithEmailAndPassword(
 				email,
 				password
-			)
+			);
 
-			await createUserProfileDocument(user, { displayName })
+			await createUserProfileDocument(user, { displayName });
 
 			setFormData({
 				displayName: '',
 				email: '',
 				password: '',
 				confirmPassword: '',
-			})
+			});
 		} catch (err) {
-			console.error(err)
+			console.error(err);
 		}
-	}
+	};
 
 	const handleChange = ({ target: { name, value } }) => {
-		setFormData({ ...formData, [name]: value })
-	}
+		setFormData({ ...formData, [name]: value });
+	};
 
 	return (
 		<div className="sign-up">
@@ -88,7 +88,7 @@ const SignUp = () => {
 				<CustomButton type="submit">SIGN UP</CustomButton>
 			</form>
 		</div>
-	)
-}
+	);
+};
 
-export default SignUp
+export default SignUp;

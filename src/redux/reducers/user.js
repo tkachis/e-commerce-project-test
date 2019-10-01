@@ -1,8 +1,8 @@
-import { SET_CURRENT_USER } from '../constants'
+import { SET_CURRENT_USER } from '../constants';
 
 const INITIAL_STATE = {
 	currentUser: null,
-}
+};
 
 const userReducer = (state = INITIAL_STATE, { type, payload }) => {
 	switch (type) {
@@ -10,10 +10,10 @@ const userReducer = (state = INITIAL_STATE, { type, payload }) => {
 			return {
 				...state,
 				currentUser: payload,
-			}
+			};
 		default:
-			return state
+			return state;
 	}
-}
+};
 
-export default userReducer
+export default userReducer;

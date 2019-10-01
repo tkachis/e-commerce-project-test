@@ -1,15 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import { auth } from '../../firebase/firebase.utils'
+import { auth } from '../../firebase/firebase.utils';
 
-import CartIcon from '../cart-icon/CartIcon'
-import CartDropdown from '../cart-dropdown/CartDropdown'
-import { ReactComponent as Logo } from '../../assets/crown.svg'
+import CartIcon from '../cart-icon/CartIcon';
+import CartDropdown from '../cart-dropdown/CartDropdown';
+import { ReactComponent as Logo } from '../../assets/crown.svg';
 
-import './header.scss'
+import './header.scss';
 
 const Header = ({ currentUser, hidden }) => {
 	return (
@@ -37,17 +37,17 @@ const Header = ({ currentUser, hidden }) => {
 			</div>
 			{!hidden && <CartDropdown />}
 		</header>
-	)
-}
+	);
+};
 
 Header.propTypes = {
 	currentUser: PropTypes.object.isRequired,
 	hidden: PropTypes.bool.isRequired,
-}
+};
 
 const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
 	currentUser,
 	hidden,
-})
+});
 
-export default connect(mapStateToProps)(Header)
+export default connect(mapStateToProps)(Header);

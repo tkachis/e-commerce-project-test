@@ -1,35 +1,35 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-import FormInput from '../form-input/FormInput'
-import CustomButton from '../custom-button/CustomButton'
+import FormInput from '../form-input/FormInput';
+import CustomButton from '../custom-button/CustomButton';
 
-import { auth, signInWithGoogle } from '../../firebase/firebase.utils'
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
 
-import './sign-in.scss'
+import './sign-in.scss';
 
 const SignIn = () => {
 	const [formData, setFormData] = useState({
 		email: '',
 		password: '',
-	})
+	});
 
-	const { email, password } = formData
+	const { email, password } = formData;
 
 	const handleChange = ({ target: { name, value } }) => {
-		setFormData({ ...formData, [name]: value })
-	}
+		setFormData({ ...formData, [name]: value });
+	};
 
 	const handleSubmit = async e => {
-		e.preventDefault()
+		e.preventDefault();
 
 		try {
-			await auth.signInWithEmailAndPassword(email, password)
+			await auth.signInWithEmailAndPassword(email, password);
 		} catch (err) {
-			console.error(err)
+			console.error(err);
 		}
 
-		setFormData({ email: '', password: '' })
-	}
+		setFormData({ email: '', password: '' });
+	};
 
 	return (
 		<div className="sign-in">
@@ -61,7 +61,7 @@ const SignIn = () => {
 				</div>
 			</form>
 		</div>
-	)
-}
+	);
+};
 
-export default SignIn
+export default SignIn;

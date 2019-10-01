@@ -1,8 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { connect } from 'react-redux';
 
-import './collection-item.scss'
+import CustomButtom from '../custom-button/CustomButton';
 
-const CollectionItem = ({ id, name, price, imageUrl }) => {
+import { addItem } from '../../redux/actions/cart';
+
+import './collection-item.scss';
+
+const CollectionItem = ({ item, addItem }) => {
+	const { name, price, imageUrl } = item;
 	return (
 		<div className="collection-item">
 			<div className="image" style={{ backgroundImage: `url(${imageUrl})` }} />
@@ -10,8 +16,14 @@ const CollectionItem = ({ id, name, price, imageUrl }) => {
 				<span className="name">{name}</span>
 				<span className="price">{price}</span>
 			</div>
+			<CustomButtom inverted onClick={() => addItem(item)}>
+				Add to cart
+			</CustomButtom>
 		</div>
-	)
-}
+	);
+};
 
-export default CollectionItem
+export default connect(
+	null,
+	{ addItem }
+)(CollectionItem);

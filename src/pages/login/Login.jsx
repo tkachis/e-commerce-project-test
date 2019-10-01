@@ -1,11 +1,11 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import React from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
-import SignIn from '../../components/sign-in/SignIn'
-import SignUp from '../../components/sign-up/SignUp'
+import SignIn from '../../components/sign-in/SignIn';
+import SignUp from '../../components/sign-up/SignUp';
 
-import './login.scss'
+import './login.scss';
 
 const Login = ({ currentUser }) => {
 	return (
@@ -14,9 +14,9 @@ const Login = ({ currentUser }) => {
 			<SignIn />
 			<SignUp />
 		</div>
-	)
-}
+	);
+};
 
 export default connect(state => ({ currentUser: state.user.currentUser }))(
 	Login
-)
+);

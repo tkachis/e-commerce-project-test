@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-import MenuItem from '../menu-item/MenuItem'
+import MenuItem from '../menu-item/MenuItem';
 
-import './directory.scss'
+import './directory.scss';
 
 const Directory = () => {
 	const [sections] = useState([
@@ -38,7 +38,7 @@ const Directory = () => {
 			id: 5,
 			routeName: '',
 		},
-	])
+	]);
 
 	return (
 		<div className="directory-menu">
@@ -46,7 +46,7 @@ const Directory = () => {
 				<MenuItem key={id} {...otherSectionProps} />
 			))}
 		</div>
-	)
-}
+	);
+};
 
-export default Directory
+export default Directory;
