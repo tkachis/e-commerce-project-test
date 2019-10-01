@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import { toggleCartHidden } from '../../redux/actions/cart';
 import { selectCartItemsCount } from '../../redux/selectors/cart';
@@ -22,8 +23,8 @@ CartIcon.propTypes = {
 	toggleCartHidden: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
-	itemCount: selectCartItemsCount(state),
+const mapStateToProps = createStructuredSelector({
+	itemCount: selectCartItemsCount,
 });
 
 export default connect(
