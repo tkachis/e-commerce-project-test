@@ -5,7 +5,11 @@ import CustomButton from '../custom-button/CustomButton';
 
 import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
 
-import './sign-in.scss';
+import {
+	SignInContainer,
+	SignInTitle,
+	ButtonsBarContainer,
+} from './sign-in.styles';
 
 const SignIn = () => {
 	const [formData, setFormData] = useState({
@@ -32,35 +36,35 @@ const SignIn = () => {
 	};
 
 	return (
-		<div className="sign-in">
-			<h2 className="title">I already have an account</h2>
+		<SignInContainer>
+			<SignInTitle>I already have an account</SignInTitle>
 			<span>Sign in with your email and password</span>
 
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={this.handleSubmit}>
 				<FormInput
 					name="email"
 					type="email"
+					handleChange={this.handleChange}
+					value={this.state.email}
 					label="email"
-					value={email}
-					onChange={handleChange}
 					required
 				/>
 				<FormInput
 					name="password"
 					type="password"
+					value={this.state.password}
+					handleChange={this.handleChange}
 					label="password"
-					value={password}
-					onChange={handleChange}
 					required
 				/>
-				<div className="buttons">
-					<CustomButton type="submit">Sign In</CustomButton>
-					<CustomButton isGoogleSignIn onClick={signInWithGoogle}>
-						Sign In With Google
+				<ButtonsBarContainer>
+					<CustomButton type="submit"> Sign in </CustomButton>
+					<CustomButton onClick={signInWithGoogle} isGoogleSignIn>
+						Sign in with Google
 					</CustomButton>
-				</div>
+				</ButtonsBarContainer>
 			</form>
-		</div>
+		</SignInContainer>
 	);
 };
 

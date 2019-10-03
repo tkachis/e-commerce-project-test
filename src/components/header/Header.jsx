@@ -12,34 +12,28 @@ import CartIcon from '../cart-icon/CartIcon';
 import CartDropdown from '../cart-dropdown/CartDropdown';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 
-import './header.scss';
+import { OptionsContainer, OptionLink, HeaderContainer } from './header.styles';
 
 const Header = ({ currentUser, hidden }) => {
 	return (
-		<header className="header">
+		<HeaderContainer>
 			<Link to="/">
 				<Logo />
 			</Link>
-			<div className="options">
-				<Link to="/shop" className="option">
-					SHOP
-				</Link>
-				<Link to="/contact" className="option">
-					CONTACT
-				</Link>
+			<OptionsContainer>
+				<OptionLink to="/shop">SHOP</OptionLink>
+				<OptionLink to="/contact">CONTACT</OptionLink>
 				{currentUser ? (
-					<div className="option" onClick={() => auth.signOut()}>
+					<OptionLink as="div" onClick={() => auth.signOut()}>
 						SIGN OUT
-					</div>
+					</OptionLink>
 				) : (
-					<Link to="/login" className="option">
-						SIGN IN
-					</Link>
+					<OptionLink to="/login">SIGN IN</OptionLink>
 				)}
 				<CartIcon />
-			</div>
+			</OptionsContainer>
 			{!hidden && <CartDropdown />}
-		</header>
+		</HeaderContainer>
 	);
 };
 

@@ -7,15 +7,15 @@ import { selectCurrentUser } from '../../redux/selectors/user';
 import SignIn from '../../components/sign-in/SignIn';
 import SignUp from '../../components/sign-up/SignUp';
 
-import './login.scss';
+import { LoginContainer } from './login.styles';
 
 const Login = ({ currentUser }) => {
 	return (
-		<div className="sign-in-and-sign-up">
+		<LoginContainer>
 			{currentUser && <Redirect to="/" />}
 			<SignIn />
 			<SignUp />
-		</div>
+		</LoginContainer>
 	);
 };
 
