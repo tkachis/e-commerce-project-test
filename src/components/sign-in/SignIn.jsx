@@ -40,20 +40,20 @@ const SignIn = () => {
 			<SignInTitle>I already have an account</SignInTitle>
 			<span>Sign in with your email and password</span>
 
-			<form onSubmit={this.handleSubmit}>
+			<form onSubmit={handleSubmit}>
 				<FormInput
 					name="email"
 					type="email"
-					handleChange={this.handleChange}
-					value={this.state.email}
+					handleChange={handleChange}
+					value={email}
 					label="email"
 					required
 				/>
 				<FormInput
 					name="password"
 					type="password"
-					value={this.state.password}
-					handleChange={this.handleChange}
+					value={password}
+					handleChange={handleChange}
 					label="password"
 					required
 				/>
