@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import CustomButtom from '../custom-button/CustomButton';
-
 import { addItem } from '../../redux/actions/cart';
 
 import {

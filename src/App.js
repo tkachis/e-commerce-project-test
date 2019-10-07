@@ -6,7 +6,6 @@ import Header from './components/header/Header';
 import HomePage from './pages/home/HomePage';
 import ShopPage from './pages/shop/ShopPage';
 import CheckoutPage from './pages/checkout/CheckoutPage';
-import CollectionPage from './pages/collection/CollectionPage';
 import Login from './pages/login/Login';
 
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
@@ -17,14 +16,14 @@ import './App.css';
 
 const App = ({ setCurrentUser }) => {
 	useEffect(() => {
-		let unsubscribefromAuth = auth.onAuthStateChanged(async userAuth => {
+		let unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
 			if (userAuth) {
 				const userRef = await createUserProfileDocument(userAuth);
 
-				userRef.onSnapshot(snapShot => {
+				userRef.onSnapshot(snapshot => {
 					setCurrentUser({
-						id: snapShot.id,
-						...snapShot.data(),
+						id: snapshot.id,
+						...snapshot.data(),
 					});
 				});
 			}
@@ -33,7 +32,7 @@ const App = ({ setCurrentUser }) => {
 		});
 
 		// component will unmount
-		return () => unsubscribefromAuth();
+		return () => unsubscribeFromAuth();
 	}, [setCurrentUser]);
 
 	return (
@@ -41,8 +40,7 @@ const App = ({ setCurrentUser }) => {
 			<Header />
 			<Switch>
 				<Route exact path="/" component={HomePage} />
-				<Route exact path="/shop" component={ShopPage} />
-				<Route path="/shop/:collectionId" component={CollectionPage} />
+				<Route path="/shop" component={ShopPage} />
 				<Route exact path="/checkout" component={CheckoutPage} />
 				<Route exact path="/login" component={Login} />
 			</Switch>

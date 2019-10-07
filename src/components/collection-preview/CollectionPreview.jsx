@@ -8,7 +8,7 @@ import {
 	PreviewContainer,
 } from './collection-preview.styles';
 
-const CollectionPreview = ({ title, items, history, match, routeName }) => (
+const CollectionPreview = ({ title, items, routeName, history, match }) => (
 	<CollectionPreviewContainer>
 		<TitleContainer onClick={() => history.push(`${match.path}/${routeName}`)}>
 			{title.toUpperCase()}
