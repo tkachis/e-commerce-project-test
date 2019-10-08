@@ -3,6 +3,7 @@ import {
 	ADD_ITEM,
 	REMOVE_ITEM,
 	CLEAR_ITEM_FROM_CART,
+	CLEAR_CART,
 } from '../constants';
 import { addItemToCart, removeItemFromCart } from '../utils/cart';
 
@@ -32,6 +33,11 @@ const cartReducer = (state = INITIAL_STATE, { type, payload }) => {
 			return {
 				...state,
 				cartItems: removeItemFromCart(state.cartItems, payload),
+			};
+		case CLEAR_CART:
+			return {
+				...state,
+				cartItems: [],
 			};
 		default:
 			return state;
