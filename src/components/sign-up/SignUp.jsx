@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
 import FormInput from '../form-input/FormInput';
 import CustomButton from '../custom-button/CustomButton';
 
-import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
+import { signUpStart } from '../../redux/actions/user';
 
 import { SignUpContainer, SignUpTitle } from './sign-up.styles';
 
-const SignUp = () => {
+const SignUp = ({ signUpStart }) => {
 	const [formData, setFormData] = useState({
 		displayName: '',
 		email: '',
@@ -25,23 +26,14 @@ const SignUp = () => {
 			return;
 		}
 
-		try {
-			const { user } = await auth.createUserWithEmailAndPassword(
-				email,
-				password
-			);
+		signUpStart({ displayName, email, password });
 
-			await createUserProfileDocument(user, { displayName });
-
-			setFormData({
-				displayName: '',
-				email: '',
-				password: '',
-				confirmPassword: '',
-			});
-		} catch (err) {
-			console.error(err);
-		}
+		setFormData({
+			displayName: '',
+			email: '',
+			password: '',
+			confirmPassword: '',
+		});
 	};
 
 	const handleChange = ({ target: { name, value } }) => {
@@ -91,4 +83,7 @@ const SignUp = () => {
 	);
 };
 
-export default SignUp;
+export default connect(
+	null,
+	{ signUpStart }
+)(SignUp);

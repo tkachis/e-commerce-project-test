@@ -3,6 +3,7 @@ import {
 	SIGN_IN_FAILURE,
 	SIGN_OUT_FAILURE,
 	SIGN_OUT_SUCCESS,
+	SIGN_UP_FAILURE,
 } from '../constants';
 
 const INITIAL_STATE = {
@@ -23,6 +24,7 @@ const userReducer = (state = INITIAL_STATE, { type, payload }) => {
 				...state,
 				currentUser: null,
 			};
+		case SIGN_UP_FAILURE:
 		case SIGN_IN_FAILURE:
 		case SIGN_OUT_FAILURE:
 			return {
