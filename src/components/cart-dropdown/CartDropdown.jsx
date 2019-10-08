@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { compose } from 'redux';
 
 import { selectCartItems } from '../../redux/selectors/cart';
 import { toggleCartHidden } from '../../redux/actions/cart';
@@ -42,9 +43,10 @@ const mapStateToProps = state => ({
 	cartItems: selectCartItems(state),
 });
 
-export default withRouter(
+export default compose(
+	withRouter,
 	connect(
 		mapStateToProps,
 		{ toggleCartHidden }
-	)(CartDropdown)
-);
+	)
+)(CartDropdown);
