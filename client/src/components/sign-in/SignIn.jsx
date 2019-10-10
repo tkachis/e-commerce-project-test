@@ -13,21 +13,21 @@ import {
 } from './sign-in.styles';
 
 const SignIn = ({ googleSignInStart, emailSignInStart }) => {
-	const [formData, setFormData] = useState({
+	const [userCredentials, setUserCredentials] = useState({
 		email: '',
 		password: '',
 	});
 
-	const { email, password } = formData;
+	const { email, password } = userCredentials;
 
 	const handleChange = ({ target: { name, value } }) => {
-		setFormData({ ...formData, [name]: value });
+		setUserCredentials({ ...userCredentials, [name]: value });
 	};
 
 	const handleSubmit = async e => {
 		e.preventDefault();
 		emailSignInStart({ email, password });
-		setFormData({ email: '', password: '' });
+		setUserCredentials({ email: '', password: '' });
 	};
 
 	return (
