@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import Spinner from './components/spinner/Spinner';
 import Header from './components/header/Header';
+import ErrorBoundary from './components/error-boundary/ErrorBoundary';
 
 import { checkUserSession } from './redux/actions/user';
 
@@ -21,12 +22,14 @@ const App = ({ checkUserSession }) => {
 		<div>
 			<Header />
 			<Switch>
-				<Suspense fallback={<Spinner />}>
-					<Route exact path="/" component={HomePage} />
-					<Route path="/shop" component={ShopPage} />
-					<Route exact path="/checkout" component={CheckoutPage} />
-					<Route exact path="/login" component={Login} />
-				</Suspense>
+				<ErrorBoundary>
+					<Suspense fallback={<Spinner />}>
+						<Route exact path="/" component={HomePage} />
+						<Route path="/shop" component={ShopPage} />
+						<Route exact path="/checkout" component={CheckoutPage} />
+						<Route exact path="/login" component={Login} />
+					</Suspense>
+				</ErrorBoundary>
 			</Switch>
 		</div>
 	);
