@@ -20,7 +20,7 @@ export const TitleContainer = styled.h1`
 	}
 
 	@media screen and (max-width: 800px) {
-		font-size: 20px;
+		font-size: 24px;
 
 		&:hover {
 			color: unset;

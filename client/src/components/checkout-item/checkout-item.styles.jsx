@@ -22,6 +22,10 @@ export const ImageContainer = styled.div`
 
 export const TextContainer = styled.span`
 	width: 23%;
+
+	@media screen and (max-width: 800px) {
+		width: 20%;
+	}
 `;
 
 export const QuantityContainer = styled(TextContainer)`
@@ -35,10 +39,18 @@ export const QuantityContainer = styled(TextContainer)`
 	div {
 		cursor: pointer;
 	}
+
+	@media screen and (max-width: 800px) {
+		margin-right: 1rem;
+	}
 `;
 
 export const RemoveButtonContainer = styled.div`
 	padding-left: 12px;
 	user-select: none;
 	cursor: pointer;
+
+	@media screen and (max-width: 800px) {
+		width: 14%;
+	}
 `;
