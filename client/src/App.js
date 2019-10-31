@@ -10,8 +10,6 @@ import Login from './pages/login/Login';
 
 import { checkUserSession } from './redux/actions/user';
 
-import './App.css';
-
 const App = ({ checkUserSession }) => {
 	useEffect(() => {
 		checkUserSession();

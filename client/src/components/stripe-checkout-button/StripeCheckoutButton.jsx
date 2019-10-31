@@ -38,7 +38,7 @@ const StripeCheckoutButton = ({ price }) => {
 			amount={priceForStripe}
 			token={onToken}
 			stripeKey={publishableKey}
-			currency="rub"
+			currency="RUB"
 		/>
 	);
 };

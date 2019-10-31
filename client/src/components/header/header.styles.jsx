@@ -8,6 +8,12 @@ export const HeaderContainer = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 25px;
+
+	@media screen and (max-width: 800px) {
+		height: 60px;
+		padding: 10px;
+		margin-bottom: 0;
+	}
 `;
 
 export const OptionsContainer = styled.div`
@@ -16,6 +22,10 @@ export const OptionsContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
+
+	@media screen and (max-width: 800px) {
+		width: 80%;
+	}
 `;
 
 export const OptionLink = styled(Link)`
